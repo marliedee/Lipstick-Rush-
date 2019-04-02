@@ -9,6 +9,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import org.pursuit.lipstickrush.controller.LipstickRushAdapter;
 import org.pursuit.lipstickrush.model.MakeupPOJO;
@@ -23,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class SecondActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class SecondActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private RecyclerView recyclerView;
     private LipstickRushAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
@@ -32,6 +33,7 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
     private SearchView searchView;
     private List<MakeupPOJO> makeupList = new ArrayList<>();
     private ProgressBar progressBar;
+    private TextView noResultTextView;
 
     @NonNull
     @Override
@@ -39,6 +41,8 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        noResultTextView = findViewById(R.id.tv_no_results);
 
         searchView = findViewById(R.id.searchViewTwo);
         searchView.setOnQueryTextListener(this);
@@ -66,6 +70,7 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
                 makeupList = response.body();
                 adapter = new LipstickRushAdapter(makeupList);
                 progressBar.setVisibility(View.INVISIBLE);
+                noResultTextView.setVisibility(View.VISIBLE);
                 recyclerView.setAdapter(adapter);
             }
 
