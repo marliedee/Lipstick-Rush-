@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lipstick Rush</string>
+    <string name="search_bar">Search Lipstick Rush...</string>
+    <string name="title_activity_second">Products</string>
+    <string name="view_products">View All Products</string>
+    <string name="image_holder">image_holder</string>
+    <string name="more_details">More Details</string>
+    <string name="loading">Loading...</string>
+    <string name="vegan_tags">Tags:</string>
+</resources>
