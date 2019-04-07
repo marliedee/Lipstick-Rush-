@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_frag_container"
+    android:importantForAutofill="auto"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="SecondActivity">
 
@@ -27,7 +29,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:queryBackground="@color/colorAccent"
+        app:iconifiedByDefault="true"
+        android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+        android:queryBackground="@color/searchbar"
         app:defaultQueryHint="@string/search_bar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

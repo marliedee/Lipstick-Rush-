@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/main_activity_background"
+    android:background="@drawable/rvlogo"
     android:transitionGroup="true"
     android:id="@+id/main_activity_container"
     android:foreground="?attr/selectableItemBackground"
@@ -32,10 +32,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:layout_marginBottom="32dp"
+        android:background="@color/button_background"
         android:drawablePadding="@dimen/fab_margin"
         android:text="@string/view_products"
         android:textColor="@color/colorAccent"
@@ -43,7 +42,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
