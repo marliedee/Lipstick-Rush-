@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class SecondActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+    private Button viewListButton;
     private RecyclerView recyclerView;
     private LipstickRushAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
@@ -34,6 +36,8 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
     private List<MakeupPOJO> makeupList = new ArrayList<>();
     private ProgressBar progressBar;
     private TextView noResultTextView;
+    private Button button;
+
 
     @NonNull
     @Override
@@ -42,6 +46,7 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+
         noResultTextView = findViewById(R.id.tv_no_results);
 
         searchView = findViewById(R.id.searchViewTwo);
@@ -49,12 +54,13 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
 
         recyclerView = findViewById(R.id.lipstick_rush_RV);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        button = findViewById(R.id.RV_button);
+
 
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(linearLayoutManager);
         progressBar = findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
-
     }
 
     @Override
@@ -80,6 +86,7 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
             }
 
         });
+
     }
 
     @Override
@@ -101,7 +108,9 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
         adapter.setData(newList);
         return false;
     }
+
 }
+
 
 
 

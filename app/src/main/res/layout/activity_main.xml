@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/main_activity_background"
     android:transitionGroup="true"
+    android:id="@+id/main_activity_container"
     android:foreground="?attr/selectableItemBackground"
     tools:context=".MainActivity">
 
@@ -44,4 +45,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.882" />
+
 </android.support.constraint.ConstraintLayout>

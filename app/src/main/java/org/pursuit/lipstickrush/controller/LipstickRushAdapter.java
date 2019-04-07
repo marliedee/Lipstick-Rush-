@@ -43,7 +43,7 @@ public class LipstickRushAdapter extends RecyclerView.Adapter<LipstickRushViewHo
     }
 
 
-    public void setData(List<MakeupPOJO> newNameList) {
+    public void setData(final List<MakeupPOJO> newNameList) {
         this.makeupPOJOList = newNameList;
         notifyDataSetChanged();
     }
