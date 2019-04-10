@@ -45,7 +45,7 @@
     <Button
         android:id="@+id/RV_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:gravity="center"

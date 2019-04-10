@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private Button goToProductsListButton;
     private Button goToDisplayProductButton;
     private MakeupPOJO makeupPOJO;
+    private final String LINKEDIN = "https://www.linkedin.com/in/marliedee/";
+    private final String GITHUB = "https://github.com/marliedee";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.linkedIn:
-                Intent linkedIn = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/marliedee/"));
+                Intent linkedIn = new Intent(Intent.ACTION_VIEW, Uri.parse(LINKEDIN));
+
                 startActivity(linkedIn);
                 return true;
             case R.id.github:
-                Intent github = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/marliedee"));
+                Intent github = new Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB));
                 startActivity(github);
                 return true;
             default:

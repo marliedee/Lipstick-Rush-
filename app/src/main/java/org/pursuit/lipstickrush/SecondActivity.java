@@ -26,7 +26,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class SecondActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-    private Button viewListButton;
     private RecyclerView recyclerView;
     private LipstickRushAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
@@ -55,7 +54,6 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
         recyclerView = findViewById(R.id.lipstick_rush_RV);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         button = findViewById(R.id.RV_button);
-
 
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -101,11 +99,14 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
             if (makeup.getBrand() == null) {
                 continue;
             }
-            if (makeup.getBrand().toLowerCase().startsWith(newText.toLowerCase())) {
+            if (makeup.getBrand().toLowerCase().startsWith(newText.toLowerCase()) ||
+                    makeup.getName().toLowerCase().startsWith(newText.toLowerCase())) {
                 newList.add(makeup);
             }
+
         }
         adapter.setData(newList);
+
         return false;
     }
 
