@@ -43,7 +43,7 @@
 
     >
     <Button
-        android:id="@+id/RV_button"
+        android:id="@+id/moreDetailsButton"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_gravity="center"

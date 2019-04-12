@@ -12,57 +12,47 @@ import org.pursuit.lipstickrush.DisplayActivity;
 import org.pursuit.lipstickrush.R;
 import org.pursuit.lipstickrush.model.MakeupPOJO;
 
-import java.util.List;
 
 public class LipstickRushViewHolder extends RecyclerView.ViewHolder {
-    private TextView textViewRV;
-    private TextView textViewRV2;
-    private TextView textViewRV4;
-    private Button button;
-    private List<MakeupPOJO> makeupPOJOList;
+    private TextView brandName;
+    private TextView productName;
+    private TextView description;
+    private Button moreDetails;
 
     public LipstickRushViewHolder(@NonNull View itemView) {
         super(itemView);
-        button = itemView.findViewById(R.id.RV_button);
-        textViewRV = itemView.findViewById(R.id.brandname);
-        textViewRV2 = itemView.findViewById(R.id.productname);
-        textViewRV4 = itemView.findViewById(R.id.description);
+        moreDetails = itemView.findViewById(R.id.moreDetailsButton);
+        brandName = itemView.findViewById(R.id.brandname);
+        productName = itemView.findViewById(R.id.productname);
+        description = itemView.findViewById(R.id.description);
 
     }
 
     public void onBind(final MakeupPOJO makeupPOJO) {
         setItems(makeupPOJO);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getAdapterPosition();
-                sendIntent(makeupPOJO);
-            }
-        });
     }
 
     private void sendIntent(MakeupPOJO makeupPOJO) {
-        Intent intentToSecond = new Intent(itemView.getContext(), DisplayActivity.class);
-        intentToSecond.putExtra("brand", makeupPOJO.getBrand());
-        intentToSecond.putExtra("name", makeupPOJO.getName());
-        intentToSecond.putExtra("vegan", makeupPOJO.getTag_list());
-        intentToSecond.putExtra("description", makeupPOJO.getDescription());
-        intentToSecond.putExtra("website", makeupPOJO.getWebsite_link());
-        intentToSecond.putExtra("image", makeupPOJO.getImage_link());
-        itemView.getContext().startActivity(intentToSecond);
+        Intent intentToDisplay = new Intent(itemView.getContext(), DisplayActivity.class);
+        intentToDisplay.putExtra("brand", makeupPOJO.getBrand());
+        intentToDisplay.putExtra("name", makeupPOJO.getName());
+        intentToDisplay.putExtra("tags", makeupPOJO.getTag_list());
+        intentToDisplay.putExtra("description", makeupPOJO.getDescription());
+        intentToDisplay.putExtra("website", makeupPOJO.getWebsite_link());
+        intentToDisplay.putExtra("image", makeupPOJO.getImage_link());
+        itemView.getContext().startActivity(intentToDisplay);
     }
 
     private void setItems(final MakeupPOJO makeupPOJO) {
-        button.setOnClickListener(new View.OnClickListener() {
+        moreDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendIntent(makeupPOJO);
             }
         });
-        textViewRV.setText(makeupPOJO.getBrand());
-        textViewRV2.setText(makeupPOJO.getName());
-        textViewRV4.setText(makeupPOJO.getDescription());
-        textViewRV4.setText(Html.fromHtml(makeupPOJO.getDescription()));
+        brandName.setText(makeupPOJO.getBrand());
+        productName.setText(makeupPOJO.getName());
+        description.setText(Html.fromHtml(makeupPOJO.getDescription()));
 
     }
 }

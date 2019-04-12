@@ -37,7 +37,6 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
     private TextView noResultTextView;
     private Button button;
 
-
     @NonNull
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
 
         recyclerView = findViewById(R.id.lipstick_rush_RV);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        button = findViewById(R.id.RV_button);
+        button = findViewById(R.id.moreDetailsButton);
 
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -108,6 +107,11 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
         adapter.setData(newList);
 
         return false;
+    }
+
+    public static SecondActivity getInstance() {
+        SecondActivity secondActivity = new SecondActivity();
+        return secondActivity;
     }
 
 }

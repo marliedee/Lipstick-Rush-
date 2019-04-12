@@ -1,8 +1,6 @@
 package org.pursuit.lipstickrush.model;
 
-import java.io.Serializable;
-
-public class ProductsColors implements Serializable {
+public class ProductsColors {
     private String hex_value;
     private String colour_name;
 

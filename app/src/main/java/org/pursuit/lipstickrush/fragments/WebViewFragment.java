@@ -2,39 +2,53 @@ package org.pursuit.lipstickrush.fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import org.pursuit.lipstickrush.R;
-import org.pursuit.lipstickrush.model.MakeupPOJO;
 
 public class WebViewFragment extends Fragment {
 
     private View rootView;
-    MakeupPOJO makeupPOJO;
+    private String makeupUrl;
 
     public WebViewFragment() {
     }
 
-    public static WebViewFragment getInstance() {
-        return new WebViewFragment();
+    public static WebViewFragment getInstance(String urlLink) {
+        WebViewFragment webViewFragment = new WebViewFragment();
+        Bundle args = new Bundle();
+        args.putString("URL",urlLink);
+        webViewFragment.setArguments(args);
+        return webViewFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null){
+
+            makeupUrl = getArguments().getString("URL");
+
+        }
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        String websiteLink = "https//www.google.com";
         WebView myWebView = rootView.findViewById(R.id.webView);
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
         myWebView.getProgress();
-        myWebView.canGoBackOrForward(1);
         myWebView.getTitle();
         myWebView.clearFormData();
         myWebView.getFavicon();
         myWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        myWebView.loadUrl(websiteLink);
-
+        myWebView.loadUrl(makeupUrl);
     }
 
 

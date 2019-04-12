@@ -3,8 +3,6 @@ package org.pursuit.lipstickrush;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,12 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import org.pursuit.lipstickrush.model.MakeupPOJO;
-
 public class MainActivity extends AppCompatActivity {
     private Button goToProductsListButton;
-    private Button goToDisplayProductButton;
-    private MakeupPOJO makeupPOJO;
     private final String LINKEDIN = "https://www.linkedin.com/in/marliedee/";
     private final String GITHUB = "https://github.com/marliedee";
 
@@ -31,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         goToProductsListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentSecond = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intentSecond);
+                Intent intentToSecond = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intentToSecond);
 
             }
         });
@@ -52,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.linkedIn:
                 Intent linkedIn = new Intent(Intent.ACTION_VIEW, Uri.parse(LINKEDIN));
-
                 startActivity(linkedIn);
                 return true;
             case R.id.github:
