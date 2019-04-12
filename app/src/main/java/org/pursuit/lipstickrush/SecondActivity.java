@@ -1,5 +1,6 @@
 package org.pursuit.lipstickrush;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,9 +21,9 @@ import org.pursuit.lipstickrush.network.MakeUpService;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class SecondActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -60,29 +61,22 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
         progressBar.setVisibility(View.VISIBLE);
     }
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onStart() {
         super.onStart();
         retro = MakeUpRetrofit.getInstance();
         MakeUpService service = retro.create(MakeUpService.class);
-        final Call<List<MakeupPOJO>> makeupPOJOCall = service.getMakeUpDetails();
-        makeupPOJOCall.enqueue(new Callback<List<MakeupPOJO>>() {
-            @Override
-            public void onResponse(Call<List<MakeupPOJO>> call, Response<List<MakeupPOJO>> response) {
-                Log.d("Marly", String.valueOf(response.body().size()));
-                makeupList = response.body();
-                adapter = new LipstickRushAdapter(makeupList);
-                progressBar.setVisibility(View.INVISIBLE);
-                noResultTextView.setVisibility(View.VISIBLE);
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<MakeupPOJO>> call, Throwable t) {
-                Log.d(TAG, "onResponse: " + t.getMessage());
-            }
-
-        });
+        Observable<List<MakeupPOJO>> makeupPOJOCall = service.getMakeUpDetails();
+        makeupPOJOCall.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(makeupPOJOS -> {
+                    makeupList.addAll(makeupPOJOS);
+                    adapter = new LipstickRushAdapter(makeupList);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    noResultTextView.setVisibility(View.VISIBLE);
+                    recyclerView.setAdapter(adapter);
+                }, throwable -> Log.d(TAG, "onResponse: " + throwable.getMessage()));
 
     }
 

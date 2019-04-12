@@ -32,25 +32,9 @@ public class WebViewFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null){
-
             makeupUrl = getArguments().getString("URL");
-
         }
     }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        WebView myWebView = rootView.findViewById(R.id.webView);
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        myWebView.getProgress();
-        myWebView.getTitle();
-        myWebView.clearFormData();
-        myWebView.getFavicon();
-        myWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        myWebView.loadUrl(makeupUrl);
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,4 +42,14 @@ public class WebViewFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_web_view, container, false);
         return rootView;
     }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        WebView myWebView = rootView.findViewById(R.id.webView);
+        myWebView.getProgress();
+        myWebView.getTitle();
+        myWebView.getFavicon();
+        myWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        myWebView.loadUrl(makeupUrl);
+    }
+
 }
