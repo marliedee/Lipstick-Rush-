@@ -15,18 +15,7 @@
             android:parentActivityName=".SecondActivity"></activity>
         <activity
             android:name=".SecondActivity"
-            android:label="@string/title_activity_second"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.pursuit.lipstickrush.MainActivity" />
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".SplashActivity"

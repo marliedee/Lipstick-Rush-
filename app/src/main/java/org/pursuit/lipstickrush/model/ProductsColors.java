@@ -12,7 +12,6 @@ public class ProductsColors {
     public String getHex_value() {
         return hex_value;
     }
-
     public String getColour_name() {
         return colour_name;
     }

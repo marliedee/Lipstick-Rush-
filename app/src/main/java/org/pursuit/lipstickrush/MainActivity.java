@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button goToProductsListButton;
-    private final String LINKEDIN = "https://www.linkedin.com/in/marliedee/";
+    private final String LINKEDIN = "https://www.linkedin.com/in/marliedee";
     private final String GITHUB = "https://github.com/marliedee";
 
     @Override
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentToSecond = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intentToSecond);
-
             }
         });
 
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
-
     }
 
     @Override
@@ -55,6 +53,5 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 }
