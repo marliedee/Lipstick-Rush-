@@ -22,12 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         goToProductsListButton = findViewById(R.id.go_to_list);
 
-        goToProductsListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentToSecond = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intentToSecond);
-            }
+        goToProductsListButton.setOnClickListener(v -> {
+            Intent intentToSecond = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intentToSecond);
         });
 
     }
