@@ -54,12 +54,9 @@ public class DisplayActivity extends AppCompatActivity{
         }
         descripText.setText(Html.fromHtml(descriptionText));
         urlLink.setText(websiteLink);
-        urlLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WebViewFragment webViewFragment = WebViewFragment.getInstance(websiteLink);
-                getSupportFragmentManager().beginTransaction().replace(R.id.test_name, webViewFragment).addToBackStack(null).commit();
-            }
+        urlLink.setOnClickListener(v -> {
+            WebViewFragment webViewFragment = WebViewFragment.getInstance(websiteLink);
+            getSupportFragmentManager().beginTransaction().replace(R.id.test_name, webViewFragment).addToBackStack(null).commit();
         });
         Picasso.get().load(intent.getStringExtra("image")).into(imageView);
 

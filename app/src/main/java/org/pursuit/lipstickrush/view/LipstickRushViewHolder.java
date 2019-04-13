@@ -44,12 +44,7 @@ public class LipstickRushViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void setItems(final MakeupPOJO makeupPOJO) {
-        moreDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendIntent(makeupPOJO);
-            }
-        });
+        moreDetails.setOnClickListener(v -> sendIntent(makeupPOJO));
         brandName.setText(makeupPOJO.getBrand());
         productName.setText(makeupPOJO.getName());
         description.setText(Html.fromHtml(makeupPOJO.getDescription()));
