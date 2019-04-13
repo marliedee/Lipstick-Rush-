@@ -1,8 +1,7 @@
 package org.pursuit.lipstickrush.model;
 
-import java.io.Serializable;
-
-class TagList implements Serializable {
+public class TagList {
+    private String[] tag_list;
 
     public TagList(String[] tag_list) {
         this.tag_list = tag_list;
@@ -12,5 +11,4 @@ class TagList implements Serializable {
         return tag_list;
     }
 
-    private String[] tag_list;
     }

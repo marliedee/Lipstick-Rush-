@@ -2,29 +2,28 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/main_activity_background"
-    android:transitionGroup="true"
+    android:background="@drawable/rvlogo"
     android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:transitionGroup="true"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="@dimen/main_imageView_height"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/logo_backgroud"
+        android:background="@drawable/logo_background"
         android:src="@mipmap/ic_launcher_xoxo_round"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/go_to_list"
@@ -33,15 +32,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/colorPrimary"
         android:drawablePadding="@dimen/fab_margin"
         android:text="@string/view_products"
         android:textColor="@color/colorAccent"
-        android:textSize="16sp"
+        android:textSize="@dimen/button_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="1" />
+
 </android.support.constraint.ConstraintLayout>

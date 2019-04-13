@@ -43,15 +43,15 @@
 
     >
     <Button
-        android:id="@+id/RV_button"
+        android:id="@+id/moreDetailsButton"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:layout_gravity="end"
+        android:layout_gravity="center"
         android:textAlignment="center"
         android:gravity="center"
         android:shadowColor="@color/colorPrimaryDark"
         android:shadowRadius="8"
-        android:background="@color/colorPrimary"
+        android:background="@color/button_background"
         android:fontFamily="sans-serif"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"

@@ -6,13 +6,13 @@
         android:radius="40dp" />
 
     <gradient
-        android:angle="45"
-        android:endColor="@color/colorPrimary"
+        android:angle="90"
+        android:endColor="#B60B0B"
         android:startColor="#ffffff"
         android:type="linear" />
 
     <stroke
         android:width="8dp"
-        android:color="#FFFFFF" />
+        android:color="#000000" />
 
 </shape>

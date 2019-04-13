@@ -4,38 +4,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.pursuit.lipstickrush.fragments.WebViewFragment;
+
 import java.util.Arrays;
 
-public class DisplayActivity extends AppCompatActivity {
+public class DisplayActivity extends AppCompatActivity{
     private ImageView imageView;
     private TextView brand;
     private TextView name;
-    private TextView vegan;
-    private TextView descrip;
+    private TextView tagLists;
+    private TextView descripText;
     private TextView urlLink;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
-        Intent intent = getIntent();
-
         brand = findViewById(R.id.brand_display);
         name = findViewById(R.id.productname_display);
-        vegan = findViewById(R.id.productname_type);
-        descrip = findViewById(R.id.decrip_display);
-        urlLink = findViewById(R.id.link_display);
+        tagLists = findViewById(R.id.productname_type);
+        descripText = findViewById(R.id.decrip_display);
         imageView = findViewById(R.id.image_display);
+        urlLink = findViewById(R.id.link_display);
+
+        Intent intent = getIntent();
 
         String brandName = intent.getStringExtra("brand");
         String productName = intent.getStringExtra("name");
-        String[] productType = intent.getStringArrayExtra("vegan");
+        String[] productType = intent.getStringArrayExtra("tags");
         String descriptionText = intent.getStringExtra("description");
         String websiteLink = intent.getStringExtra("website");
         String arrayToString = Arrays.toString(productType).replace("]", "").substring(1);
@@ -44,13 +48,20 @@ public class DisplayActivity extends AppCompatActivity {
         brand.setText(brandName);
         name.setText(productName);
         if (arrayToString.isEmpty()) {
-            vegan.setText("");
+            tagLists.setText("");
         } else {
-            vegan.setText(getString(R.string.vegan_tags) + arrayToString);
+            tagLists.setText(getString(R.string.tagLists) + arrayToString);
         }
-        descrip.setText(Html.fromHtml(descriptionText));
+        descripText.setText(Html.fromHtml(descriptionText));
         urlLink.setText(websiteLink);
-
+        urlLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WebViewFragment webViewFragment = WebViewFragment.getInstance(websiteLink);
+                getSupportFragmentManager().beginTransaction().replace(R.id.test_name, webViewFragment).addToBackStack(null).commit();
+            }
+        });
         Picasso.get().load(intent.getStringExtra("image")).into(imageView);
+
     }
 }

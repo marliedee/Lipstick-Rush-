@@ -5,17 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import org.pursuit.lipstickrush.R;
 import org.pursuit.lipstickrush.model.MakeupPOJO;
 import org.pursuit.lipstickrush.view.LipstickRushViewHolder;
 
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class LipstickRushAdapter extends RecyclerView.Adapter<LipstickRushViewHolder> {
     private List<MakeupPOJO> makeupPOJOList;
@@ -43,7 +38,7 @@ public class LipstickRushAdapter extends RecyclerView.Adapter<LipstickRushViewHo
     }
 
 
-    public void setData(List<MakeupPOJO> newNameList) {
+    public void setData(final List<MakeupPOJO> newNameList) {
         this.makeupPOJOList = newNameList;
         notifyDataSetChanged();
     }
