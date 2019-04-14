@@ -29,9 +29,10 @@ public class SecondActivityTest {
             Assert.assertTrue(newText, val);
         }
     }
-        @After
-        public void tearDown () throws Exception {
-            secondActivity = null;
-        }
+
+    @After
+    public void tearDown() throws Exception {
+        secondActivity = null;
+    }
 }
 
