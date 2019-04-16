@@ -14,7 +14,7 @@ public class SecondActivityTest {
 
     @Before
     public void setUp() throws Exception {
-        secondActivity = SecondActivity.getInstance();
+        secondActivity = new SecondActivity();
     }
 
     @Test

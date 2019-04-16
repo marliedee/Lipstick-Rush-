@@ -103,11 +103,6 @@ public class SecondActivity extends AppCompatActivity implements SearchView.OnQu
         return false;
     }
 
-    public static SecondActivity getInstance() {
-        SecondActivity secondActivity = new SecondActivity();
-        return secondActivity;
-    }
-
 }
 
 
